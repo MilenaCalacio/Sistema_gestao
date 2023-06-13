@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class ClienteDAL
+    public class ClienteDAL
     {
         public void Inserir(Cliente _cliente)
         {
@@ -92,7 +93,7 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Nome, CPF, RG, Email, Fone FROM CLiente WHERE Nome LIKE @Nome";
+                cmd.CommandText = @"SELECT Id,Nome, CPF, RG, Email, Fone FROM CLiente WHERE Nome LIKE @Nome";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue ("@Nome" ,"%" + _nome + "%");
 
@@ -102,6 +103,7 @@ namespace DAL
                     while (rd.Read())
 
                     {
+                        cliente = new Cliente ();
                         cliente.Id = (int)rd["Id"];
                         cliente.Nome = rd["Nome"].ToString();
                         cliente.CPF = rd["CPF"].ToString();
@@ -165,11 +167,11 @@ namespace DAL
             }
 
         }
-        public ClienteDAL BuscarPorCPF(string _CPF)
+        public Cliente BuscarPorCPF(string _CPF)
         {
             return null;
         }
-        public void Alterar (ClienteDAL _cliente)
+        public void Alterar (Cliente _cliente)
         {
 
         }
