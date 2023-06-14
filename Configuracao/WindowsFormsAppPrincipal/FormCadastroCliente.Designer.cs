@@ -98,35 +98,39 @@
             // 
             // buttonCancelar
             // 
+            this.buttonCancelar.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Location = new System.Drawing.Point(713, 415);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
             this.buttonCancelar.TabIndex = 2;
             this.buttonCancelar.Text = "&Cancelar";
-            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.UseVisualStyleBackColor = false;
             // 
             // buttonSalvar
             // 
+            this.buttonSalvar.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.buttonSalvar.Location = new System.Drawing.Point(613, 415);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
             this.buttonSalvar.TabIndex = 3;
             this.buttonSalvar.Text = "&Salvar";
-            this.buttonSalvar.UseVisualStyleBackColor = true;
+            this.buttonSalvar.UseVisualStyleBackColor = false;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(297, 18);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(236, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.Size = new System.Drawing.Size(240, 29);
             this.label1.TabIndex = 4;
             this.label1.Text = "Cadastro De Cliente";
             // 
             // nomeTextBox
             // 
+            this.nomeTextBox.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.nomeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Nome", true));
             this.nomeTextBox.Location = new System.Drawing.Point(82, 87);
             this.nomeTextBox.Name = "nomeTextBox";
@@ -139,6 +143,7 @@
             // 
             // emailTextBox
             // 
+            this.emailTextBox.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Email", true));
             this.emailTextBox.Location = new System.Drawing.Point(79, 135);
             this.emailTextBox.Name = "emailTextBox";
@@ -147,6 +152,7 @@
             // 
             // cPFTextBox
             // 
+            this.cPFTextBox.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.cPFTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "CPF", true));
             this.cPFTextBox.Location = new System.Drawing.Point(408, 84);
             this.cPFTextBox.Name = "cPFTextBox";
@@ -155,6 +161,7 @@
             // 
             // rGTextBox
             // 
+            this.rGTextBox.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.rGTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "RG", true));
             this.rGTextBox.Location = new System.Drawing.Point(467, 134);
             this.rGTextBox.Name = "rGTextBox";
@@ -163,6 +170,7 @@
             // 
             // foneTextBox
             // 
+            this.foneTextBox.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.foneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Fone", true));
             this.foneTextBox.Location = new System.Drawing.Point(78, 176);
             this.foneTextBox.Name = "foneTextBox";

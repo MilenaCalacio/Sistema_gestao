@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace WindowsFormsAppPrincipal
 {
@@ -31,7 +32,21 @@ namespace WindowsFormsAppPrincipal
         private void buttonBuscarCliente_Click(object sender, EventArgs e)
         {
             try
-            {
+            {  switch (comboBoxBuscarPor.SelectedIndex)
+                { 
+                    case 0:
+                        clienteBindingSource.DataSource = new ClienteBLL().BuscarPorId(Convert.ToInt32(textBoxBuscar.Text));
+                        break;
+                    case 1:
+                        clienteBindingSource.DataSource = new ClienteBLL().BuscarPorNome(Convert.(textBoxBuscar.Text);
+                        break;
+                    case 2:
+                        clienteBindingSource.DataSource = new ClienteBLL().BuscarPorCPF(Convert.(textBoxBuscar.Text);
+                    case 3:
+                        clienteBindingSource.DataSource = new ClienteBLL().BuscarTodos(Convert.(textBoxBuscar.Text);
+                        break;
+
+                }
                 clienteBindingSource.DataSource = new ClienteBLL().BuscarPorNome(textBox1.Text);
             }
             catch (Exception ex)
@@ -59,6 +74,36 @@ namespace WindowsFormsAppPrincipal
             }
         }
 
+        private void buttonAlterarCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (clienteBindingSource.Count == 0) ;
+                {
+                    MessageBox.Show("Não existe cliente para ser alterado. ");
+                    return ;
+                }
+                int id = ((Cliente)clienteBindingSource.Current).Id;
+
+                using (FormCadastroCliente frm = new FormCadastroCliente(id))
+                {
+                    frm.ShowDialog();
+                }
+                buttonBuscarCliente_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void FormConsultaCliente_Load(object sender, EventArgs e)
+        {
+            comboBoxBuscarPor.SelectedIndex = 3;
+        }
+
+       
     }
 }
 

@@ -135,7 +135,7 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Nome, CPF, RG, Email, Fone FROM CLiente WHERE Id = @Id";
+                cmd.CommandText = @"SELECT Id,Nome, CPF, RG, Email, Fone FROM CLiente WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id",_id);
 
@@ -173,7 +173,34 @@ namespace DAL
         }
         public void Alterar (Cliente _cliente)
         {
+            SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
+            try
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @"UPDATE Cliente SET
+                                      Nome = @Nome,
+                                      CPF = @CPF,
+                                      RG = @RG,
+                                      Email = @Email,
+                                      Fone = @Fone
+                                      WHERE Id = @Id";
+                cmd.CommandType = System.Data.CommandType.Text;
 
+                cmd.Parameters.AddWithValue("@Id", _cliente.Id);
+                cmd.Parameters.AddWithValue("@Nome", _cliente.Nome);
+                cmd.Parameters.AddWithValue("@CPF", _cliente.CPF);
+                cmd.Parameters.AddWithValue("@RG", _cliente.RG);
+                cmd.Parameters.AddWithValue("@Email", _cliente.Email);
+                cmd.Parameters.AddWithValue("@Fone", _cliente.Fone);
+
+                cmd.Connection = cn;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
         public void Excluir (int _id)
         {
