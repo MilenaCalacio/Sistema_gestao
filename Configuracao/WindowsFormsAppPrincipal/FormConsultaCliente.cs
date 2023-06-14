@@ -45,6 +45,8 @@ namespace WindowsFormsAppPrincipal
                     case 3:
                         clienteBindingSource.DataSource = new ClienteBLL().BuscarTodos(Convert.(textBoxBuscar.Text);
                         break;
+                        default:
+                        break;
 
                 }
                 clienteBindingSource.DataSource = new ClienteBLL().BuscarPorNome(textBox1.Text);
