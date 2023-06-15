@@ -35,21 +35,26 @@ namespace WindowsFormsAppPrincipal
             {  switch (comboBoxBuscarPor.SelectedIndex)
                 { 
                     case 0:
+                        if (String.IsNullOrEmpty(textBoxBuscar.Text ))
+                            throw new Exception("Informe um Id para fazer a buscar.") { Data = { { "Id", 31 } } };
+
                         clienteBindingSource.DataSource = new ClienteBLL().BuscarPorId(Convert.ToInt32(textBoxBuscar.Text));
                         break;
                     case 1:
-                        clienteBindingSource.DataSource = new ClienteBLL().BuscarPorNome(Convert.(textBoxBuscar.Text);
+                        clienteBindingSource.DataSource = new ClienteBLL().BuscarPorNome(textBoxBuscar.Text);
                         break;
                     case 2:
-                        clienteBindingSource.DataSource = new ClienteBLL().BuscarPorCPF(Convert.(textBoxBuscar.Text);
+                        clienteBindingSource.DataSource = new ClienteBLL().BuscarPorCPF(textBoxBuscar.Text);
+                        break ;
                     case 3:
-                        clienteBindingSource.DataSource = new ClienteBLL().BuscarTodos(Convert.(textBoxBuscar.Text);
-                        break;
-                        default:
+                        clienteBindingSource.DataSource = new ClienteBLL().BuscarTodos ();
                         break;
 
+                        default:
+
+                           break;
+
                 }
-                clienteBindingSource.DataSource = new ClienteBLL().BuscarPorNome(textBox1.Text);
             }
             catch (Exception ex)
             {
@@ -67,7 +72,13 @@ namespace WindowsFormsAppPrincipal
                     MessageBox.Show("Não existe registro para ser excluído");
                     return;
                 }
-                new ClienteBLL().Excluir(((Cliente)clienteBindingSource.Current).Id);
+
+                if (MessageBox.Show("Deseja realmente excluir este registro?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
+                    int id = ((Cliente)clienteBindingSource.Current).Id;
+
+                    new ClienteBLL().Excluir(id);
+
                 clienteBindingSource.RemoveCurrent();
             }
             catch (Exception ex)
@@ -80,7 +91,7 @@ namespace WindowsFormsAppPrincipal
         {
             try
             {
-                if (clienteBindingSource.Count == 0) ;
+                if (clienteBindingSource.Count == 0) 
                 {
                     MessageBox.Show("Não existe cliente para ser alterado. ");
                     return ;
@@ -105,7 +116,10 @@ namespace WindowsFormsAppPrincipal
             comboBoxBuscarPor.SelectedIndex = 3;
         }
 
-       
+        private void buttonSelecionar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
