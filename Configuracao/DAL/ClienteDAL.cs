@@ -237,7 +237,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-             throw new Exception ("Ocorreu um erro ao tentar apagar um cliente do banco de dados.",ex);   
+             throw new Exception ("Ocorreu um erro ao tentar alterar um cliente do banco de dados.",ex);   
             }
             finally 
             { cn.Close(); }
