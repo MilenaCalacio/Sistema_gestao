@@ -168,6 +168,7 @@
             this.Controls.Add(this.nomeTextBox);
             this.Name = "FormCadastroFornecedor";
             this.Text = "FormCadastroFornecedor";
+            this.Load += new System.EventHandler(this.FormCadastroFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -42,6 +42,8 @@
             this.buttonIncluir = new System.Windows.Forms.Button();
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxBuscarPor = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -159,9 +161,9 @@
             // 
             // textBoxBuscar
             // 
-            this.textBoxBuscar.Location = new System.Drawing.Point(13, 45);
+            this.textBoxBuscar.Location = new System.Drawing.Point(110, 47);
             this.textBoxBuscar.Name = "textBoxBuscar";
-            this.textBoxBuscar.Size = new System.Drawing.Size(305, 22);
+            this.textBoxBuscar.Size = new System.Drawing.Size(224, 22);
             this.textBoxBuscar.TabIndex = 6;
             // 
             // label1
@@ -174,11 +176,30 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Consulta Fornecedor";
             // 
+            // comboBoxBuscarPor
+            // 
+            this.comboBoxBuscarPor.FormattingEnabled = true;
+            this.comboBoxBuscarPor.Location = new System.Drawing.Point(2, 47);
+            this.comboBoxBuscarPor.Name = "comboBoxBuscarPor";
+            this.comboBoxBuscarPor.Size = new System.Drawing.Size(102, 24);
+            this.comboBoxBuscarPor.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(2, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 16);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Buscar por";
+            // 
             // FormConsultaFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxBuscarPor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxBuscar);
             this.Controls.Add(this.buttonIncluir);
@@ -188,6 +209,7 @@
             this.Controls.Add(this.fornecedorDataGridView);
             this.Name = "FormConsultaFornecedor";
             this.Text = "FormConsultaFornecedor";
+            this.Load += new System.EventHandler(this.FormConsultaFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -210,5 +232,7 @@
         private System.Windows.Forms.Button buttonIncluir;
         private System.Windows.Forms.TextBox textBoxBuscar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxBuscarPor;
+        private System.Windows.Forms.Label label2;
     }
 }

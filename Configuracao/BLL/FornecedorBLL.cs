@@ -29,7 +29,7 @@ namespace BLL
             return new FornecedorDAL().BuscarPorTodos();
         } 
 
-        public List<Fornecedor> BuscarSite(string _site)
+        public List<Fornecedor> BuscarPorSite(string _site)
         {
             return new FornecedorDAL().BuscarPorSite(_site);
         } 
@@ -42,6 +42,7 @@ namespace BLL
         {
             new FornecedorDAL().Excluir(_id);
         } 
+       
 
 
     }

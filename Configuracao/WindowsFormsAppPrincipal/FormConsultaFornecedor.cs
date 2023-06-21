@@ -21,12 +21,46 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                switch (comboBoxBuscarPor.SelectedIndex)
+                {
+                    case 0:
+                        if (String.IsNullOrEmpty(textBoxBuscar.Text))
+                            throw new Exception("Informe um Id para fazer a buscar.") { Data = { { "Id", 78 } } };
 
+                       fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorId(Convert.ToInt32(textBoxBuscar.Text));
+                        break;
+                    case 1:
+                        fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorNome(textBoxBuscar.Text);
+                        break;
+                    
+                    case 2:
+                       fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorSite(textBoxBuscar.Text);
+                        break;
+                    case 3:
+                        fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorTodos();
+                        break;
+
+
+                    default:
+
+                        break;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonIncluir_Click(object sender, EventArgs e)
         {
-
+            using (FormCadastroFornecedor frm = new FormCadastroFornecedor())
+            {
+                frm.ShowDialog();
+            }
         }
         private void buttonAlterar_Click(object sender, EventArgs e)
         {
@@ -73,6 +107,11 @@ namespace WindowsFormsAppPrincipal
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void FormConsultaFornecedor_Load(object sender, EventArgs e)
+        {
+            comboBoxBuscarPor.SelectedIndex = 4;
         }
     }
 }

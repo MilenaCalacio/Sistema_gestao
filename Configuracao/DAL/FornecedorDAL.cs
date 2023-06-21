@@ -16,7 +16,7 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn .CreateCommand();
-                cmd.CommandText = @"INSERT INTO Fornecedor(Nome,Site,Email,Fone) (@Nome,@Site,@Email,@Fone)";
+                cmd.CommandText = @"INSERT INTO Fornecedor(Nome,Site,Email,Fone) VALUES (@Nome,@Site,@Email,@Fone)";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Nome", _fornecedor.Nome);
@@ -32,7 +32,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar Inserir fornecedor no banco de dados", ex) { Data = { { "Id", 25 } } };
+                throw new Exception("Ocorreu um erro ao tentar Inserir fornecedor no banco de dados", ex) { Data = { { "Id", 98 } } };
 
             }
             finally
