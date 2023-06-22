@@ -28,18 +28,17 @@ namespace WindowsFormsAppPrincipal
                     case 0:
                         if (String.IsNullOrEmpty(textBoxBuscar.Text))
                             throw new Exception("Informe um Id para fazer a buscar.") { Data = { { "Id", 78 } } };
-
-                       fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorId(Convert.ToInt32(textBoxBuscar.Text));
+                        fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorTodos();
                         break;
                     case 1:
+                        fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorId(Convert.ToInt32(textBoxBuscar.Text));
+                        break;
+
+                    case 2:
                         fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorNome(textBoxBuscar.Text);
                         break;
-                    
-                    case 2:
-                       fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorSite(textBoxBuscar.Text);
-                        break;
                     case 3:
-                        fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorTodos();
+                        fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorSite(textBoxBuscar.Text);
                         break;
 
 
@@ -111,7 +110,7 @@ namespace WindowsFormsAppPrincipal
 
         private void FormConsultaFornecedor_Load(object sender, EventArgs e)
         {
-            comboBoxBuscarPor.SelectedIndex = 4;
+            comboBoxBuscarPor.SelectedIndex = 3;
         }
     }
 }

@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxBuscarPor = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -179,6 +180,11 @@
             // comboBoxBuscarPor
             // 
             this.comboBoxBuscarPor.FormattingEnabled = true;
+            this.comboBoxBuscarPor.Items.AddRange(new object[] {
+            "Todos",
+            "Id",
+            "Nome",
+            "Site"});
             this.comboBoxBuscarPor.Location = new System.Drawing.Point(2, 47);
             this.comboBoxBuscarPor.Name = "comboBoxBuscarPor";
             this.comboBoxBuscarPor.Size = new System.Drawing.Size(102, 24);
@@ -193,11 +199,22 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Buscar por";
             // 
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.Location = new System.Drawing.Point(608, 415);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FormConsultaFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxBuscarPor);
             this.Controls.Add(this.label1);
@@ -234,5 +251,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxBuscarPor;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
