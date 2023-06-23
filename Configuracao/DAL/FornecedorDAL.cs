@@ -16,13 +16,13 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn .CreateCommand();
-                cmd.CommandText = @"INSERT INTO Fornecedor(Nome,Site,Email,Fone) VALUES (@Nome,@Site,@Email,@Fone)";
+                cmd.CommandText = @"INSERT INTO Fornecedor(Nome, Fone, Email, Site) VALUES (@Nome,@Fone,@Email,@Site)";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Nome", _fornecedor.Nome);
-                cmd.Parameters.AddWithValue("@Site", _fornecedor.Site);
-                cmd.Parameters.AddWithValue("@Email", _fornecedor.Email);
                 cmd.Parameters.AddWithValue("@Fone", _fornecedor.Fone);
+                cmd.Parameters.AddWithValue("@Email", _fornecedor.Email);
+                cmd.Parameters.AddWithValue("@Site", _fornecedor.Site);
 
                 cmd.Connection = cn;
                 cn.Open();
@@ -50,7 +50,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, Site, Email, Fone FROM Forncedor ";
+                cmd.CommandText = @"SELECT Id, Nome, Fone, Email, Site FROM Fornecedor ";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
@@ -61,9 +61,9 @@ namespace DAL
                         fornecedor = new Fornecedor();
                         fornecedor.Id = (int)rd["Id"];
                         fornecedor.Nome = rd["Nome"].ToString();
-                        fornecedor.Site = rd["Site"].ToString();
+                        fornecedor.Fone  = rd["Fone"].ToString();
                         fornecedor.Email = rd["Email"].ToString();
-                        fornecedor.Fone = rd["Fone"].ToString();
+                        fornecedor.Site = rd["Site"].ToString();
 
                         fornecedorList.Add(fornecedor);
                     }
@@ -72,7 +72,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar buscar fornecedor no banco de dados", ex) { Data = { { "Id", 33 } } };
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os fornecedor no banco de dados", ex) { Data = { { "Id", 33 } } };
             }
             finally
             {
@@ -91,7 +91,7 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, Site, Email, Fone FROM CLiente WHERE Id = @Id";
+                cmd.CommandText = @"SELECT Id,Nome, Fone, Email, Site FROM Fornecedor WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id", _id);
 
@@ -112,7 +112,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar buscar fornecedor no banco de dados", ex) { Data = { { "Id", 35 } } };
+                throw new Exception("Ocorreu um erro ao tentar buscar por id fornecedor no banco de dados", ex) { Data = { { "Id", 35 } } };
             }
             finally
             {
@@ -130,7 +130,7 @@ namespace DAL
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id,Nome,Site, Email, Fone FROM Fornecedor WHERE Nome LIKE @Nome";
+                cmd.CommandText = @"SELECT Id,Nome, Fone, Email, Site FROM Fornecedor WHERE Nome LIKE @Nome";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nome", "%" + _nome + "%");
 
@@ -143,9 +143,9 @@ namespace DAL
                         fornecedor = new Fornecedor();
                         fornecedor.Id = (int)rd["Id"];
                         fornecedor.Nome = rd["Nome"].ToString();
-                        fornecedor.Site = rd["Site"].ToString();
-                        fornecedor.Email = rd["email"].ToString();
-                        fornecedor.Fone = rd["Fone"].ToString();
+                        fornecedor.Site = rd["Fone"].ToString();
+                        fornecedor.Email = rd["Email"].ToString();
+                        fornecedor.Fone = rd["Site"].ToString();
 
                         fornecedorList.Add(fornecedor);
                     }
@@ -175,7 +175,7 @@ namespace DAL
 
                 List<Fornecedor> fornecedorList = new List<Fornecedor>();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, Fone, Email, Site FROM Fornecedor WHERE Site Like @Site";
+                cmd.CommandText = @"SELECT Id,Nome, Fone, Email, Site FROM Fornecedor WHERE Site Like @Site";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Site", _site);
 
@@ -188,9 +188,9 @@ namespace DAL
                         fornecedor = new Fornecedor();
                         fornecedor.Id = (int)rd["Id"];
                         fornecedor.Nome = rd["Nome"].ToString();
+                        fornecedor.Fone = rd["Fone"].ToString();
                         fornecedor.Email = rd["Email"].ToString();
                         fornecedor.Site = rd["Site"].ToString();
-                        fornecedor.Fone = rd["Fone"].ToString();
 
                         fornecedorList.Add(fornecedor);
                     }
@@ -225,9 +225,9 @@ namespace DAL
 
                 cmd.Parameters.AddWithValue("@Id", _fornecedor.Id);
                 cmd.Parameters.AddWithValue("@Nome", _fornecedor.Nome);
-                cmd.Parameters.AddWithValue("@Nome", _fornecedor.Nome);
+                cmd.Parameters.AddWithValue("@fone", _fornecedor.Fone);
                 cmd.Parameters.AddWithValue("@Email", _fornecedor.Email);
-                cmd.Parameters.AddWithValue("@Fone", _fornecedor.Fone);
+                cmd.Parameters.AddWithValue("@Site", _fornecedor.Site);
 
                 cmd.Connection = cn;
                 cn.Open();

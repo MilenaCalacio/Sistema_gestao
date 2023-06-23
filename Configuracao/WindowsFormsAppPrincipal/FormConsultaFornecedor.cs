@@ -26,11 +26,11 @@ namespace WindowsFormsAppPrincipal
                 switch (comboBoxBuscarPor.SelectedIndex)
                 {
                     case 0:
-                        if (String.IsNullOrEmpty(textBoxBuscar.Text))
-                            throw new Exception("Informe um Id para fazer a buscar.") { Data = { { "Id", 78 } } };
                         fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorTodos();
                         break;
                     case 1:
+                        if (String.IsNullOrEmpty(textBoxBuscar.Text))
+                            throw new Exception("Informe um Id para fazer a buscar.") { Data = { { "Id", 78 } } };
                         fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorId(Convert.ToInt32(textBoxBuscar.Text));
                         break;
 
@@ -98,7 +98,7 @@ namespace WindowsFormsAppPrincipal
                     return;
                 int id = ((Fornecedor)fornecedorBindingSource.Current).Id;
 
-                new ClienteBLL().Excluir(id);
+                new FornecedorBLL().Excluir(id);
 
                 fornecedorBindingSource.RemoveCurrent();
             }
